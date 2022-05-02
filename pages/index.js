@@ -4,21 +4,32 @@ import path from "path";
 import matter from "gray-matter";
 import Post from "../packages/components/Post";
 import { sortByDate } from "../utils";
+import { Grid, Box } from "@chakra-ui/react";
 
 export default function Home({ posts }) {
   return (
-    <>
-      <div>
-        {posts.map((post, index) => {
-          return (
-            <div key={index}>
-              {post.frontmatter.title}
-              <Post post={post} />
-            </div>
-          );
-        })}
-      </div>
-    </>
+    <Grid
+      // columns={{ base: 1, sm: 2, md: 3 }}
+      templateColumns={{
+        base: "1fr",
+        sm: "1fr",
+        md: "repeat(2,1fr)",
+        lg: "repeat(3,1fr)",
+      }}
+      maxWidth='998px'
+      p='5px'
+      gap='5px'
+      justifyItems='center'
+      margin='0 auto'
+    >
+      {posts.map((post, index) => {
+        return (
+          <>
+            <Post post={post} />
+          </>
+        );
+      })}
+    </Grid>
   );
 }
 
