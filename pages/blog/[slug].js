@@ -12,15 +12,20 @@ export default function PostPage({
   return (
     <Box p='5px'>
       <Heading className=''>{title}</Heading>
+
       <Text fontSize='sm' className=''>
         {date}
       </Text>
+
       <Image src={cover_image} alt='cover_image' maxW='500px' w='70%' />
+
       <Divider mt='5px' />
+
       <div
         className=''
         dangerouslySetInnerHTML={{ __html: marked.parse(content) }}
       ></div>
+
       <Button>
         <Link href='/'>go back</Link>
       </Button>

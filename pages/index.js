@@ -4,12 +4,11 @@ import path from "path";
 import matter from "gray-matter";
 import Post from "../packages/components/Post";
 import { sortByDate } from "../utils";
-import { Grid, Box } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 
 export default function Home({ posts }) {
   return (
     <Grid
-      // columns={{ base: 1, sm: 2, md: 3 }}
       templateColumns={{
         base: "1fr",
         sm: "1fr",
@@ -24,9 +23,9 @@ export default function Home({ posts }) {
     >
       {posts.map((post, index) => {
         return (
-          <>
+          <div key={index}>
             <Post post={post} />
-          </>
+          </div>
         );
       })}
     </Grid>
@@ -34,10 +33,8 @@ export default function Home({ posts }) {
 }
 
 export async function getStaticProps() {
-  // get files
   const files = fs.readdirSync(path.join("posts"));
 
-  // get slug & front-matter
   const posts = files.map((filename) => {
     const slug = filename.replace(".md", "");
 
