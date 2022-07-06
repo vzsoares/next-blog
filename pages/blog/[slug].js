@@ -10,7 +10,7 @@ export default function PostPage({
   content,
 }) {
   return (
-    <Box p='5px'>
+    <Box p='5px' display='flex' flexDir='column' alignItems='center'>
       <Heading className=''>{title}</Heading>
 
       <Text fontSize='sm' className=''>
@@ -21,10 +21,10 @@ export default function PostPage({
 
       <Divider mt='5px' />
 
-      <div
-        className=''
+      <Box
+        id='markdown'
         dangerouslySetInnerHTML={{ __html: marked.parse(content) }}
-      ></div>
+      ></Box>
 
       <Button>
         <Link href='/'>go back</Link>

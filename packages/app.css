@@ -1,0 +1,4 @@
+#markdown * {
+  all: revert;
+  max-width: 700px;
+}
